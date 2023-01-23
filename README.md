@@ -6,8 +6,6 @@
   <br>
 </h1>
 
-<h4 align="center">Lightweight Communications Framework</h4>
-
 <p align="center">
     <a alt="Java">
         <img src="https://img.shields.io/badge/Java-v17-orange.svg" />
