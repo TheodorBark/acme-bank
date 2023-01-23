@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:${DB_NAME:bank}
+    username: ${DB_USER:sa}
+    password: ${DB_USER:password}
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: ${MIGRATION_ENABLED:true}
+    url: jdbc:h2:mem:${DB_NAME:bank}
+    user: ${DB_USER:sa}
+    password: ${DB_USER:password}
+  h2:
+    console:
+      enabled: true
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: mappings,beans,env,metrics,health,info
+    endpoint:
+      health:
+        show-details: always
+        probes:
+          enabled: true
+        group:
+          liveliness:
+            include: ping
+            show-details: always
+          readiness:
+            show-details: always
+
+acme:
+  bank:
+    savings:
+      min-account-balance: 2000.00
+    current:
+      max-overdraft-limit: 100000
